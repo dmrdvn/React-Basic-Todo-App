@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
 
+/* Modules */
+import Header from './modules/Header';
+import Main from './modules/Main';
+import Footer from './modules/Footer';
+
+import { useState } from 'react';
+
 function App() {
+
+  const [todos,setTodos] = useState([{note:"Learn Javascript"},{note:"Learn React"},{note:"Have a life!"}]);
+  /* P.S Obje tanımlarken array içinde tanımlıyoruz. [{note: ""},{note: ""}] */
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todoapp">
+      <div className='container'>
+            <h1>todos</h1>
+            <div className='row'>
+              <Header todos={todos} setTodos={setTodos}/>
+              <Main todos={todos}/>
+              <Footer todos={todos} setTodos={setTodos}/>
+            </div>
+      </div>
     </div>
   );
 }
